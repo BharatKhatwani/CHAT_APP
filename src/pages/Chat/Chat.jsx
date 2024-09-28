@@ -8,8 +8,9 @@ const Chat = () => {
     <div className='chat'>
     <div className="chat-container">
       <LeftSidebar/>
-      <RightSidebar/>
       <Chatbox/>
+      <RightSidebar/>
+  
     </div>
     </div>
   )
