@@ -1,6 +1,11 @@
 // Import the functions you need from the SDKs
 import { initializeApp } from "firebase/app";
-import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { 
+  createUserWithEmailAndPassword, 
+  getAuth, 
+  signInWithEmailAndPassword, 
+  signOut // Import signOut for the logout function
+} from "firebase/auth";
 import { getFirestore, setDoc, doc } from "firebase/firestore"; // Ensure 'doc' is imported
 import { toast } from "react-toastify";
 
@@ -47,7 +52,7 @@ const signup = async (username, email, password) => {
 
   } catch (error) {
     console.log("Error during sign up:", error);
-    // Fixed the incorrect chaining of toast.error
+    // Show a user-friendly error message using toast
     toast.error(error.code.split('/')[1].split('-').join(' '));
   }
 };
@@ -59,20 +64,20 @@ const login = async (email, password) => {
     toast.success("Logged in successfully!");
   } catch (error) {
     console.error("Error during login:", error);
-    // Fixed the incorrect chaining of toast.error
+    // Show a user-friendly error message using toast
     toast.error(error.code.split('/')[1].split('-').join(' '));
   }
 };
 
-const logout = async() => {
-    try {
-        await signOut(auth)
-    } catch (error) {
-        console.log(error);
-        console.log(error.code.split('/')[1].split('-').join(" "));
-    }
-}
+// Logout function
+const logout = async () => {
+  try {
+    await signOut(auth); // Sign out the user
+    toast.success("Logged out successfully!"); // Display success message
+  } catch (error) {
+    console.log("Error during logout:", error);
+    toast.error(error.code.split('/')[1].split('-').join(' '));
+  }
+};
 
-
-
-export { signup, login,logout };
+export { signup, login, logout, auth, db };
