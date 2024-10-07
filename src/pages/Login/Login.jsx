@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../Login/Login.css';
 import assets from '../../assets/assets.js';
-import { signup ,login} from '../../Config/firebase.js'; // Import the signup function
+import { signup, login } from '../../Config/firebase.js'; // Import the signup and login functions
 
 const Login = () => {
   const [current, setCurrent] = useState("Sign up"); // State to toggle between Sign up and Login
@@ -12,18 +12,18 @@ const Login = () => {
   // Form submission handler
   const onSubmitHandler = async (event) => {
     event.preventDefault(); // Prevent page reload on form submission
-    if (current === "Sign up") {
-     
+    try {
+      if (current === "Sign up") {
         // Call Firebase sign-up function
         await signup(userName, email, password);
         console.log("User signed up successfully");
-      
-    } else {
-      // If it's login, call the login function
-     
-         login(email, password);
+      } else {
+        // Call Firebase login function
+        await login(email, password);
         console.log("User logged in successfully");
-      
+      }
+    } catch (error) {
+      console.error("Error during authentication:", error);
     }
   };
 
