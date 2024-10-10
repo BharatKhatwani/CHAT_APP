@@ -44,12 +44,15 @@ const ProfileUpdate = () => {
       }
       const snap = await getDoc(docRef);
       setUserData(snap.data());
-      navigate('/chat');
+      
+      toast.success('Profile updated successfully');
+      navigate('/chat');  // Redirect to chat after profile update
     } catch (error) {
       console.log(error);
       toast.error(error.message);
     }
   };
+  
 
   useEffect(() => {
     onAuthStateChanged(auth, async (user) => {

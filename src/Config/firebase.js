@@ -11,13 +11,14 @@ import { toast } from "react-toastify";
 
 // Firebase configuration object
 const firebaseConfig = {
-  apiKey: "AIzaSyDn-9YTe2lVZ6oJWY_i7byhmuHNtrucFgY",
-  authDomain: "chat-app-6a039.firebaseapp.com",
-  projectId: "chat-app-6a039",
-  storageBucket: "chat-app-6a039.appspot.com",
-  messagingSenderId: "164157600102",
-  appId: "1:164157600102:web:9c8a4813eab2dcf20418a7"
+  apiKey: "AIzaSyAKLqe_up9Phxmld2fyMNKItl9e1Sl8MSQ",
+  authDomain: "chating-app-1dae9.firebaseapp.com",
+  projectId: "chating-app-1dae9",
+  storageBucket: "chating-app-1dae9.appspot.com",
+  messagingSenderId: "983293861990",
+  appId: "1:983293861990:web:38d14629f2fb8bab39cda7"
 };
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -44,7 +45,7 @@ const signup = async (username, email, password) => {
 
     // Initialize chat data in Firestore for the user
     await setDoc(doc(db, "chats", user.uid), {
-      chatData: []
+      chatsData: []
     });
 
     console.log("User signed up and data stored successfully");

@@ -18,7 +18,7 @@ const App = () => {
       if (user) {
         try {
           if (window.location.pathname === '/') {
-            navigate('/chat');  // Only navigate to chat if the user is on the login page
+            navigate('/profile');  // Navigate to profile page after login
           }
           await loadUserData(user.uid);
         } catch (error) {
